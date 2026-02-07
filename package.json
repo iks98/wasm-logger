@@ -1,0 +1,54 @@
+{
+  "name": "wasm-logger",
+  "version": "0.1.0",
+  "description": "A tiny logger that attaches to an Emscripten-like Module and exposes an event/listener API with optional replay buffer.",
+  "license": "MIT",
+  "author": "Ali Kamali Sarvestani",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iks98/wasm-logger.git"
+  },
+  "keywords": [
+    "wasm",
+    "emscripten",
+    "module",
+    "logger",
+    "logging"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.esm.js",
+  "types": "./types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js"
+    }
+  },
+  "files": [
+    "dist/",
+    "src/",
+    "types/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "lint": "eslint .",
+    "typecheck": "tsc -p types/tsconfig.json",
+    "prepublishOnly": "npm run lint && npm run typecheck && npm run build"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "eslint": "^9.0.0",
+    "globals": "^15.0.0",
+    "rollup": "^4.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.0",
+    "@rollup/plugin-commonjs": "^26.0.0",
+    "@rollup/plugin-terser": "^0.4.4",
+    "typescript": "^5.0.0"
+  }
+}
